@@ -46,7 +46,6 @@
     transform: scale(1.1);
 }
   
-
 .wrapper {
     display: none;
     width: 600px;
@@ -71,16 +70,14 @@
     font-size: 16px;
 }
 
-
 #loader {
     width: 60px;
     height: 60px;
     display: none;
-    /* display: inline-flex; */
     background-color: transparent;
     animation: loading 2.5s infinite linear;
     border-radius: 50%;
-    border: 4px dashed #6EC98E;
+    border: 4px dashed #2d0052;
     transition: border-color 1s;
 }
 
@@ -96,7 +93,7 @@
     }
 }
 
-.paginatios {
+.paginations{
     width: 600px;
     height: 80px;
     margin-top: 10px;
@@ -105,9 +102,19 @@
     overflow: auto;
 }
 
-.paginatios .paginatios__btn {
+::-webkit-scrollbar{
+    width: 0.6rem;
+    background: #413e3e;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #272525;
+  border-radius: .5rem;
+}
+
+.paginations .paginations__btn{
     min-width: 45px;
-    max-height: 50px;
+    max-height: 45px;
     border-style: none;
     border-radius: 5px;
     font-size: 18px;
@@ -119,13 +126,14 @@
     transition: all .3s;
 }
 
-.paginatios .paginatios__btn:hover{
+
+.paginations .paginations__btn:hover{
     color: #fbc470;
     font-size: 20px;
     transform: scale(1.2);
 }
 
-.paginatios .paginatios__btn.active {
+.paginations .paginations__btn.active {
     background-color: #fbc470;
     color: indigo;
     font-size: 20px;

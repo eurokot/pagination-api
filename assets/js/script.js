@@ -1,7 +1,7 @@
 const log = console.log;
 
 const wrapperPosts = document.querySelector('.wrapper');
-const wrapperPagination = document.querySelector('.paginatios');
+const wrapperPagination = document.querySelector('.paginations');
 const postsList = document.querySelector('.posts__list');
 const containerBtn = document.querySelector('.posts__button');
 const getPostsBtn = document.querySelector('.posts__get-posts');
@@ -22,7 +22,6 @@ const createPost = (post) => `
 
 const fillPostsList = (posts) => {
     postsList.innerHTML = "";
-    loader.style.display = 'flex';
     setTimeout(() => {
         loader.style.display = 'none';
         wrapperPosts.style.display = 'flex';
@@ -40,12 +39,12 @@ const generatePosts = (posts) => {
     posts.slice(start, end).forEach((post, index) => postsList.innerHTML += createPost(post, index));
     for(let i = 0; i < calcPaginations; i++) {
         if(i == 0) {
-            wrapperPagination.innerHTML += `<button class='paginatios__btn active'>${i + 1}</button>`;
+            wrapperPagination.innerHTML += `<button class='paginations__btn active'>${i + 1}</button>`;
         } else {
-            wrapperPagination.innerHTML += `<button class='paginatios__btn'>${i + 1}</button>`;
+            wrapperPagination.innerHTML += `<button class='paginations__btn'>${i + 1}</button>`;
         }
     }
-    const paginatiosBtn = document.querySelectorAll('.paginatios__btn');
+    const paginatiosBtn = document.querySelectorAll('.paginations__btn');
     paginatiosBtn.forEach(button => {
         button.addEventListener('click', nextPage);
     })
@@ -69,7 +68,8 @@ const nextPage = (event) => {
 
 const handler = () => {
     containerBtn.remove();
-    return fetch('https://jsonplaceholder.typicode.com/posts?_limit=60')
+    loader.style.display = 'flex';
+    return fetch('https://jsonplaceholder.typicode.com/posts?_limit=80')
             .then((res) => { return res.ok ? res.json() : log('Error') })
             .then((data) => state.posts = [...data])
             .catch(error => log(error))
